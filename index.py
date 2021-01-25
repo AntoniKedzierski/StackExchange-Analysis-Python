@@ -158,5 +158,7 @@ def update_forums(year_range, forum, num_of_tags, num_int_posts, p_value):
 
 if __name__ == '__main__':
   load_forum("lifehacks")
+  if not os.path.isdir("research/outputs"):
+    os.mkdir("research/outputs")
   app.run_server(debug=True, dev_tools_ui=False, dev_tools_props_check=False)
 

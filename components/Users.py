@@ -2,7 +2,16 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 
+def plot_darkness():
+  darkness = pd.read_csv("research/darkside.csv")
+  fig = go.Figure()
+  fig.add_trace(go.Bar(x=darkness["Forum"], y=(darkness["BadPosts"] / darkness["TotalPosts"]), name="Posty"))
+  fig.add_trace(go.Bar(x=darkness["Forum"], y=10 * (darkness["BadUsers"] / darkness["TotalUsers"]), name="Użytkownicy"))
+  fig.update_layout(title="Stosunek złych postów i użytkowników do wszystkich")
+  return fig
 
 def UsersPage(available_forums):
   dark_users = pd.read_csv("research/darkins.csv")
@@ -61,7 +70,7 @@ def UsersPage(available_forums):
                  "być wprost proporcjonalne do siebie. Jednak na niektórych forach stosunek ten jest zaburzony. " +
                  "Można to zobaczyć na poniższym wykresie, gdzie przedstawiono procentowy stosunek ujemnych postów " +
                  "do wszystkich oraz stosunek tzw. mrocznych użytkowników do wszystkich."),
-          dcc.Graph(id="dark-users-graph"),
+          dcc.Graph(id="dark-users-graph", figure=plot_darkness()),
           html.H3("2. Najgorsi użytkownicy na StackExchange.com"),
           html.P("Z każdego forum wybraliśmy dziesięciu najgorszych użytkowników, to znaczy takich, którzy mieli " +
                  "największą różnicę pomiędzy głosami w dół a w górę. Kilku z nich pojawiło się w więcej niż jednym 'Top 10'."),
@@ -77,7 +86,7 @@ def UsersPage(available_forums):
                       html.Img(src="https://i.stack.imgur.com/Haz6W.jpg?s=128&g=1", style={"width": "200px", "height": "auto"})
                     ]),
                     html.H3(dark_users.loc[0, "DisplayName"]),
-                    html.P(f"Obeność w Top 10 na forach: {dark_users.loc[0, 'NumOfTerroredForums']}"),
+                    html.P(f"Obecność w Top 10 na forach: {dark_users.loc[0, 'NumOfTerroredForums']}"),
                     html.P(f"Średnia liczba głosów w dół: {dark_users.loc[dark_users.AccountId == 6085540, 'VoteDiff'].mean().round(2)}")
                   ])
                 ])
@@ -91,7 +100,7 @@ def UsersPage(available_forums):
                 dbc.CardBody([
                   dbc.Col([
                     html.H5(dark_users.loc[16, "DisplayName"]),
-                    html.P(f"Obeność w Top 10 na forach: {dark_users.loc[16, 'NumOfTerroredForums']}"),
+                    html.P(f"Obecność w Top 10 na forach: {dark_users.loc[16, 'NumOfTerroredForums']}"),
                     html.P(f"Średnia liczba głosów w dół: {dark_users.loc[dark_users.AccountId == 4333085, 'VoteDiff'].mean().round(2)}")
                   ])
                 ])
@@ -103,7 +112,7 @@ def UsersPage(available_forums):
                 dbc.CardBody([
                   dbc.Col([
                     html.H5(dark_users.loc[20, "DisplayName"]),
-                    html.P(f"Obeność w Top 10 na forach: {dark_users.loc[20, 'NumOfTerroredForums']}"),
+                    html.P(f"Obecność w Top 10 na forach: {dark_users.loc[20, 'NumOfTerroredForums']}"),
                     html.P(
                       f"Średnia liczba głosów w dół: {dark_users.loc[dark_users.AccountId == 24885, 'VoteDiff'].mean().round(2)}")
                   ])
@@ -116,7 +125,7 @@ def UsersPage(available_forums):
                 dbc.CardBody([
                   dbc.Col([
                     html.H5(dark_users.loc[23, "DisplayName"]),
-                    html.P(f"Obeność w Top 10 na forach: {dark_users.loc[24, 'NumOfTerroredForums']}"),
+                    html.P(f"Obecność w Top 10 na forach: {dark_users.loc[24, 'NumOfTerroredForums']}"),
                     html.P(
                       f"Średnia liczba głosów w dół: {dark_users.loc[dark_users.AccountId == 34933, 'VoteDiff'].mean().round(2)}")
                   ])
@@ -129,7 +138,7 @@ def UsersPage(available_forums):
                 dbc.CardBody([
                   dbc.Col([
                     html.H5(dark_users.loc[26, "DisplayName"]),
-                    html.P(f"Obeność w Top 10 na forach: {dark_users.loc[26, 'NumOfTerroredForums']}"),
+                    html.P(f"Obecność w Top 10 na forach: {dark_users.loc[26, 'NumOfTerroredForums']}"),
                     html.P(
                       f"Średnia liczba głosów w dół: {dark_users.loc[dark_users.AccountId == 300272, 'VoteDiff'].mean().round(2)}")
                   ])

@@ -4,3 +4,10 @@ Do uruchomienia projektu najlepiej wykorzystać PyCharma. Tworzymy projekt z wir
 `pip install -r requirements.txt`
 
 Po otwarciu PyCharma w prawym górnym rogu klikamy `Add Configuration`, wybieramy plik `index.py`, a następnie uruchamiamy `Ctrl+Shift+F10`.
+
+# Prezentacja
+
+Materiał wideo z prezentacją dostępny jest na [https://youtu.be/PrbcDVZrKWA](YouTube):
+
+- 0:00 do 4:48 - Antoni Kędzierski
+- 4:48 do końca - Marek Wiese

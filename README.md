@@ -7,7 +7,7 @@ Po otwarciu PyCharma w prawym górnym rogu klikamy `Add Configuration`, wybieram
 
 # Prezentacja
 
-Materiał wideo z prezentacją dostępny jest na [https://youtu.be/PrbcDVZrKWA](YouTube):
+Materiał wideo z prezentacją dostępny jest na [YouTube](https://youtu.be/PrbcDVZrKWA):
 
 - 0:00 do 4:48 - Antoni Kędzierski
 - 4:48 do końca - Marek Wiese
